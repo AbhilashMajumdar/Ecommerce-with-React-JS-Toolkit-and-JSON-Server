@@ -1,0 +1,65 @@
+Frontend -> Backend -> Connection and deploy !!
+
+Frontend -> (React with Redux)
+
+1. Creating template and installing tailwind dependencies.
+npx create-react-app frontend --template redux
+npm install tailwindcss@latest
+npx tailwindcss init
+npm install @headlessui/react @heroicons/react
+add this ->  "./src/**/*.{js,jsx,ts,tsx}", to the content of tailwind.config.js
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+add above commands to index.js and then run npm start.
+
+1. Creating Home page which contains -> navbar -> under navbar we have filter, sort category sections, then product lists grid (all products), pagination section. design -> all products grid -> filter, catagfory section -> paginatiuon -> navbar.
+
+2. Creating Login and signup pages which are under auth (feature -> auth -> components) folder and implemented React-router 6 to perform routing from one page to anothr page.
+
+3. Creating Product details page and generating route from product list page to product detail page.
+
+4. Creating Cart page which will show the number of items, price and total price all those info related to cart section.
+
+5. Creating checkout section, which contains shipping informations as well as cart details.
+
+6. Installing json-server to generate all the products from api itself. here we are using products from dummy-json website, http://localhost:8080/products?limit=100 will show 100 dummy products. All the products stored in data.json and running the json file as json-server --watch data.json --port 8080. Fetching all the products with fetchAllProducts call using reactjs toolkit, productSlice -> using useSelector getting the state of the product reducer which containing all the products -> using useDispatch dispatching the action, and getting all the products in product list then using those products array in product-list component.
+
+7. Creating test.js and using quoka.js in vs code to get category and brand value in product-list component.
+
+8. Now worked on filter based on category and brands and also sort based on best rating, price high to low , price low to high.
+   category=["laptops","smartphones"]. brand=["apple"]
+   sort={_sort:rating, _order:desc} / {_sort:price, _order:desc}
+
+9. Separating each of the component for home page like MobileFilter, DesktopFilter, ProductGrid, Pagination.
+
+10. Worked on pagination component. 
+    pagination - {_page:1, _limit:10}
+
+11. Worked on product Details components, rendered the currently selected product details by api call. 
+
+12. Working on Sign in login section. Here taking inputs from react-hooks-form and storing in the api using post request.While login validating the password and then proceed to home page as well as after sign in we are redirecting to the user to home page.
+
+13. Now we worked on cart component. Adding product in cart, also fetching the cart by user id and showing the number of products in cart in navbar. Then updating the product quantity in cart , deleting the product from cart. All are performing using the cart api calls.
+
+14. After cart, next is checkout section. here also all the cart api calls used and for checkout we need addresses of user and the payment method, once the user provided the address and payment method he can proceed to pay and order section.
+
+15. When the user click on pay and order button, at that time we are redirecting the user to the order summary page (orderSuccess page). Here we are showing order id and user can track the order from for ex - ( my profile -> my account -> my order).
+
+16. next we worked on userorder page which is available in navbar -> options - /myorders , here we are showing all the orders that the user made.
+
+17. We worked on user profile page which is available in navbar -> options - /myprofile, here we are showing all the addresses that the user added in checkout section. Here user can update theri existing data as well as user can add new address in this section.
+
+18. Now worked on logout section, when user clicks on logout, we should redirect the user to /logout page and here setting the loggedInUserInfo as null. then the user redirects in login section.
+
+19. Next we worked on forgotPassword component. While login if the user clicks on forgot password option, then we are redirecting user to forgot Password page here user need to enter his email to reset the password.
+
+20. Now we worked on Admin Panel. For admin also there will be separated productlist and home page component. Also routing will be different for admin component. Here from navbar we are enabling one option only for admin, that by clicking on that Admin option, admin can be redirected to /home/admin page, and from there admin can add new product, admin can update an existing product and also admin can remove product by setting delete flag equals to true.
+
+21. Admin also can see all the orders that made by users. Admin can edit the order status. As well as admin can sort the orders by order id and price and here also we are using pagination component. Also admin can see the orders by clicking on eyeIcon and delete the order with TrashIcon.
+
+22. When the stock becomes less than equal 0 then we need to set a flag so that we can identify the product out of stock.
+
+23. Whenever one product is added in cart, then we can't add that product in the cart, so we need to fix this issue.
+
+24. Here we are generating loader using react-loader, as well as we are creating alert using react alert, adding footer component from  tailwindcomponent and adding modal using tailwind modal component for deleting/removing activities and added logo for our application.
